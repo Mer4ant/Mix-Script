@@ -17,7 +17,11 @@ Start code:
 cd compiler
 node index.js
 ```
-Start code:
+Start coding:
+```bash
+cd test
+```
+Open index.mx
 ```mx
 print(int)100; # Comment
 ```
