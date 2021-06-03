@@ -1,0 +1,58 @@
+			if(/\"(.*)\"/gim.test(value)) {
+				if(value.length === 1) {
+					Object.assign(stringObject, { "value": {
+							"type": "char",
+							"value": value
+						} 
+					});
+				}else {
+					Object.assign(stringObject, { "value": {
+							"type": "string",
+							"value": value
+						} 
+					});
+				}
+			}else {
+				if(Number(value)) {
+					if(Number(value) % 1 === 0) {
+						//int
+						if(Number(value) > -2147483648 && Number(value) < 21447483647) {
+							Object.assign(stringObject, { "value": {
+									"type": "integer",
+									"value": Number(value)
+								} 
+							});
+						} else {
+							if(Number(value) > -9223372036854775808 && Number(value) < 9223372036854775807) {
+								Object.assign(stringObject, { "value": {
+										"type": "integer",
+										"subtype": "longint",
+										"value": Number(value)
+									} 
+								});
+							}else {
+								Object.assign(stringObject, { "value": {
+										"type": "integer",
+										"subtype": "infinity",
+										"value": Number(value)
+									} 
+								});
+							}
+						}
+					}else {
+						// float
+						Object.assign(stringObject, { "value": {
+								"type": "float",
+								"value": Number(value)
+							} 
+						});
+					}
+				}else {
+					// else
+					Object.assign(stringObject, { "value": {
+							"type": "undefined",
+							"value": value
+						} 
+					});
+				}
+			}

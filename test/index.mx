@@ -1,0 +1,3 @@
+print: (int)100; # commend;
+#comment 2;
+print: (int)100;
